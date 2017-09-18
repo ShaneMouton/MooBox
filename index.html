@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Prince Of Persia</title>
+    <script type='text/javascript' src="scripts/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+    </style>
+  </head>
+  <body class="fullscreen">
+<div class="hidden">
+    <div class="spinner" id='spinner'></div>
+    <div class="emscripten" id="status">Downloading...</div>
+</div>
+<img class="button" id="sound" src="img/speaker.png">
+<img class="button" id="keyboard" src="img/keyboard.png" onclick="">
+<div id="progressBar"></div>
+
+<div id="controller">
+    <div id="joystick">
+        <div id="innerJoystick"></div>
+    </div>
+
+    <div id="action">
+        <div id="a" class="conButton" data-id="4"></div>
+        <div id="b" class="conButton" data-id="5"></div>
+        <div id="optButtons">
+            <div id="start" class="conButton" data-id="6"></div>
+            <div id="select" class="conButton" data-id="7"></div>
+        </div>
+    </div>
+</div>
+
+<div id="keyboardContainer">
+    <div id="onScreenKeyboard">
+        <div class="keyRow">
+            <div class="key" id="key192" data-id="192">
+                <div class="normal">`</div>
+                <div class="shifted">~</div>
+            </div>
+
+            <div class="key" id="key49" data-id="49">
+                <div class="normal">1</div>
+                <div class="shifted">!</div>
+            </div>
+
+            <div class="key" id="key50" data-id="50">
+                <div class="normal">2</div>
+                <div class="shifted">@</div>
+            </div>
+
+            <div class="key" id="key51" data-id="51">
+                <div class="normal">3</div>
+                <div class="shifted">#</div>
+            </div>
+
+            <div class="key" id="key52" data-id="52">
+                <div class="normal">4</div>
+                <div class="shifted">$</div>
+            </div>
+
+            <div class="key" id="key53" data-id="53">
+                <div class="normal">5</div>
+                <div class="shifted">%</div>
+            </div>
+
+            <div class="key" id="key54" data-id="54">
+                <div class="normal">6</div>
+                <div class="shifted">^</div>
+            </div>
+
+            <div class="key" id="key55" data-id="55">
+                <div class="normal">7</div>
+                <div class="shifted">&amp;</div>
+            </div>
+
+            <div class="key" id="key56" data-id="56">
+                <div class="normal">8</div>
+                <div class="shifted">*</div>
+            </div>
+
+            <div class="key" id="key57" data-id="57">
+                <div class="normal">9</div>
+                <div class="shifted">(</div>
+            </div>
+
+            <div class="key" id="key48" data-id="48">
+                <div class="normal">0</div>
+                <div class="shifted">)</div>
+            </div>
+
+            <div class="key" id="key189" data-id="189">
+                <div class="normal">-</div>
+                <div class="shifted">_</div>
+            </div>
+
+            <div class="key" id="key187" data-id="187">
+                <div class="normal">=</div>
+                <div class="shifted">+</div>
+            </div>
+
+            <div class="key" id="key8" data-id="8">Bak</div>
+        </div>
+
+        <div class="keyRow">
+            <div class="key" id="key9" data-id="9">Tab</div>
+            <div class="key" id="key81" data-id="81">Q</div>
+            <div class="key" id="key87" data-id="87">W</div>
+            <div class="key" id="key69" data-id="69">E</div>
+            <div class="key" id="key82" data-id="82">R</div>
+            <div class="key" id="key84" data-id="84">T</div>
+            <div class="key" id="key89" data-id="89">Y</div>
+            <div class="key" id="key85" data-id="85">U</div>
+            <div class="key" id="key73" data-id="73">I</div>
+            <div class="key" id="key79" data-id="79">O</div>
+            <div class="key" id="key80" data-id="80">P</div>
+            <div class="key" id="key219" data-id="219">
+                <div class="normal">[</div>
+                <div class="shifted">{</div>
+            </div>
+            <div class="key" id="key221" data-id="221">
+                <div class="normal">]</div>
+                <div class="shifted">}</div>
+            </div>
+            <div class="key" id="key220" data-id="220">
+                <div class="normal">\</div>
+                <div class="shifted">|</div>
+            </div>
+        </div>
+
+        <div class="keyRow">
+            <div class="key" id="key20" data-id="20">CapsL</div>
+            <div class="key" id="key65" data-id="65">A</div>
+            <div class="key" id="key83" data-id="83">S</div>
+            <div class="key" id="key68" data-id="68">S</div>
+            <div class="key" id="key70" data-id="70">F</div>
+            <div class="key" id="key71" data-id="71">G</div>
+            <div class="key" id="key72" data-id="72">H</div>
+            <div class="key" id="key74" data-id="74">J</div>
+            <div class="key" id="key75" data-id="75">K</div>
+            <div class="key" id="key76" data-id="76">L</div>
+            <div class="key" id="key186" data-id="186">
+                <div class="normal">;</div>
+                <div class="shifted">:</div>
+            </div>
+            <div class="key" id="key222" data-id="222">
+                <div class="normal">'</div>
+                <div class="shifted">"</div>
+            </div>
+            <div class="key" id="key13" data-id="13">Ent</div>
+        </div>
+
+        <div class="keyRow">
+            <div class="key shiftKey" data-id="16">Shift</div>
+
+            <div class="key" id="key90" data-id="90">Z</div>
+            <div class="key" id="key88" data-id="88">X</div>
+            <div class="key" id="key67" data-id="67">C</div>
+            <div class="key" id="key86" data-id="86">V</div>
+            <div class="key" id="key66" data-id="66">B</div>
+            <div class="key" id="key78" data-id="78">N</div>
+            <div class="key" id="key77" data-id="77">M</div>
+
+            <div class="key" id="key188" data-id="188">
+                <div class="normal">,</div>
+                <div class="shifted">&lt;</div>
+            </div>
+            <div class="key" id="key190" data-id="190">
+                <div class="normal">.</div>
+                <div class="shifted">&gt;</div>
+            </div>
+            <div class="key" id="key191" data-id="191">
+                <div class="normal">/</div>
+                <div class="shifted">?</div>
+            </div>
+            <div class="key shiftKey" data-id="16">Shift</div>
+        </div>
+
+        <div class="keyRow">
+            <div class="key controlKey" data-id="17">Ctr</div>                   <!-- Dupes get classes -->
+            <div class="key" id="key91" data-id="91">M</div>
+            <div class="key altKey" data-id="18">Alt</div>                   <!-- Dupes get classes -->
+            <div class="key" id="key32" data-id="32">Space Bar</div>
+            <div class="key altKey" data-id="18">Alt</div>                   <!-- Dupes get classes -->
+            <div class="key" id="key92" data-id="92">M</div>
+            <div class="key" id="key93" data-id="93">_</div>
+            <div class="key controlKey" data-id="17">Ctr</div>                   <!-- Dupes get classes -->
+        </div>
+        <img src="img/abc.svg" id="keyboardGlyph">
+    </div>
+</div>
+
+ <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+
+<div id="console">
+    <img src="img/hash.png" id="outputTab">
+    <textarea id="output" rows="8"></textarea>
+</div>
+    <script type='text/javascript' src="scripts/em_gui.js"></script>
+
+
+    <script type="text/javascript">
+    var main = function() {
+        var running;
+        var timer;
+
+        (function checkSDL() {
+            if(!('SDL2' in window)){
+                timer = setTimeout(checkSDL, 100);
+                console.log("How many ticks to load?");
+            } else {
+                running = (SDL2.audioContext.state === 'running');
+                $("#sound").click(function(){
+                    if(!running){
+                        SDL2.audioContext.resume();
+                        running = true;
+                    }else{
+                        SDL2.audioContext.suspend();
+                        running = false;
+                    }
+                });
+
+                clearTimeout(timer);
+            }
+        }());
+    }
+    </script>
+    <script type='text/javascript' src="scripts/controllers.js"></script>
+    <script type='text/javascript' src="module/env_var.js"></script>
+    <script async type="text/javascript" src="dosbox/dosbox.js"></script>
+
+  </body>
+</html>
